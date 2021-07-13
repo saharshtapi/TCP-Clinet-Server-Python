@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 #Simple tcp server.
 import socket
@@ -6,19 +6,22 @@ import socket
 serversocket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 #host = socket.gethostbyname() //to get automatically
-host= '192.168.1.68'
-port = 4444
+host= input("Enter the IP you want to listen on: ")
+port = int(input("Enter the Port you want to listen on:"))
 
 serversocket.bind((host,port))
 
 serversocket.listen(3)
 
 while True:
-	clientsocket, address=serversocket.accept()
+	try:
+		clientsocket, address=serversocket.accept()
 
-	print("Receive connectioin from %s " % str(address))
+		print("Receive connectioin from " ,str(address))
 
-	message= 'Thnk you for connection to the server' + "\r\n"
-	clientsocket.send(message)
+		message= 'Thnk you for connection to the server' + "\r\n"
+		clientsocket.send(message.encode('ascii'))
 
-	clientsocket.close() 
+		clientsocket.close() 
+	except:
+		exit()
