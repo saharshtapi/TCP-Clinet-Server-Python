@@ -1,11 +1,11 @@
-#!/usr/bin/pyton2
+#!/usr/bin/pyton3
 
 import socket
 
 clientsocket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
-host = '192.168.1.68'
-port= 4444
+host = input("Enter the IP you want to connect to: ")
+port= int(input("Enter the Port you want to connect to: "))
 
 clientsocket.connect((host,port))
 
@@ -13,4 +13,4 @@ message= clientsocket.recv(1024)
 
 clientsocket.close()
 
-print(message)
+print(message.decode('ascii'))
