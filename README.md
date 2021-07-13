@@ -1,2 +1,2 @@
 # TCP-Clinet-Server-Python
-A TCP Client and Server created with Python2
+A TCP Client and Server created with Python3
